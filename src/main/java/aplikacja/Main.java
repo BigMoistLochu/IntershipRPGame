@@ -2,6 +2,7 @@ package aplikacja;
 
 
 import aplikacja.gameBoard.GameBoard;
+import aplikacja.gameBoard.PlayerMovement;
 
 import javax.swing.*;
 
@@ -18,6 +19,7 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         GameBoard gameBoard = new GameBoard();
+        PlayerMovement playerMovement = new PlayerMovement();
         window.add(gameBoard);
 
         window.pack();
