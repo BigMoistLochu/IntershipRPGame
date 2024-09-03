@@ -1,43 +1,29 @@
 package aplikacja.entity;
 
-import javax.swing.*;
+public class Player extends Entity{
 
-public class Player {
+    //co ile ma gracz sie przesuwac(tutaj 48 oznacza ze o jedna kratke)
+    protected final int tileMove = 48;
 
-    private int x;
-    private int y;
-
-    public Player(){}
+    public Player(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
     public void moveUp(){
-        if(this.y >= 0 && this.y > 48){
-            this.y = this.y - 48;
-        }
+        y = y - tileMove;
     }
 
     public void moveDown(){
-        if(this.y >= 0){
-            this.y = this.y + 48;
-        }
+        y = y + tileMove;
     }
 
     public void moveRight(){
-        if(this.x >= 0){
-            this.x = this.x + 48;
-        }
+       x = x + tileMove;
     }
 
     public void moveLeft(){
-        if(this.x >= 0 && this.x > 48){
-            this.x = this.x - 48;
-        }
+        x = x - tileMove;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 }

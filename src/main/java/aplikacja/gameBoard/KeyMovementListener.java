@@ -1,21 +1,20 @@
 package aplikacja.gameBoard;
 
+
+
 import aplikacja.entity.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class PlayerMovement implements KeyListener {
+public class KeyMovementListener implements KeyListener {
 
     private boolean UP_KEY_PRESSED,RIGHT_KEY_PRESSED,LEFT_KEY_PRESSED,DOWN_KEY_PRESSED;
+
     private Player player;
 
-    public void setPlayer(Player player){
+    public KeyMovementListener(Player player){
         this.player = player;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     @Override
