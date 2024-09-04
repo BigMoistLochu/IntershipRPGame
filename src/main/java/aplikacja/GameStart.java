@@ -2,18 +2,26 @@ package aplikacja;
 
 
 import aplikacja.gameBoard.GameBoard;
-import aplikacja.gameBoard.KeyMovementListener;
+import aplikacja.server.ServerService;
+import aplikacja.server.implementation.ServerDaoImpl;
 
 import javax.swing.*;
 
-public class Main {
+public class GameStart {
+
 
 
     public static void main(String[] args) {
-        configMainWindowGame();
+        createGameFrame();
+
+
+        //ServerSocket IMP
+        ServerDaoImpl serverDao = new ServerDaoImpl();
+        ServerService service = new ServerService(serverDao);
+        service.connect();
     }
 
-    public static void configMainWindowGame(){
+    public static void createGameFrame(){
         JFrame window = new JFrame();
         window.setTitle("IntershipRPGame");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

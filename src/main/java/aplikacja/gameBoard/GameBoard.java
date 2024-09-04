@@ -3,6 +3,8 @@ package aplikacja.gameBoard;
 
 
 import aplikacja.entity.Player;
+import aplikacja.server.ServerService;
+import aplikacja.server.implementation.ServerDaoImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +12,7 @@ import java.awt.*;
 
 public class GameBoard extends JPanel implements Runnable{
 
-    //Game Settings
+    //Game Board Settings
     private final int ORGINAL_TILE_SIZE = 16; //obrazki tworzymy 16x16
     private final int SCALE = 3;
     private final int TILE_SIZE = SCALE * ORGINAL_TILE_SIZE; //jedna plytka ma wymiar 48x48
@@ -19,10 +21,15 @@ public class GameBoard extends JPanel implements Runnable{
     private final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COLUMN; //48x16 = 768 pixeli
     private final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // 48x12 = 576 pixeli
 
-    private final int FPS = 60; //renderowanie(repaint()) bedzie wykonywal sie 60 razy na sekunde
+    //Game FPS(60 frames per second)
+    private final int FPS = 60;
+
+    //Game Board Thread
+    private Thread gameBoardLoopThread;
 
     private final Player player = new Player(48,48);
-    private Thread gameBoardLoopThread;
+
+
     public GameBoard(){
         //Main Setting Board
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -31,7 +38,7 @@ public class GameBoard extends JPanel implements Runnable{
 
         //Create Game Loop Thread
         this.gameBoardLoopThread = new Thread(this);
-        gameBoardLoopThread.start();
+        gameBoardLoopThread.start(); //start thread working
 
         //Setting KeyListener
         KeyMovementListener keyMovementListener = new KeyMovementListener(player);
@@ -39,7 +46,6 @@ public class GameBoard extends JPanel implements Runnable{
 
 
         this.setFocusable(true);
-
     }
 
     /**
@@ -83,22 +89,21 @@ public class GameBoard extends JPanel implements Runnable{
         updateGame(g);
     }
 
-    public void updateGame(Graphics g){
+    private void updateGame(Graphics g){
+        paintMap(g);
         paintPlayer(g);
-        paintAnotherObjectPlayer(g);
     }
 
-    protected void paintPlayer(Graphics graphics){
+    private void paintMap(Graphics graphics){
         Graphics2D graphics2D = (Graphics2D) graphics;
         graphics2D.setColor(Color.WHITE);
-        graphics2D.fillRect(player.getX(), player.getY(), TILE_SIZE,TILE_SIZE);
+        graphics2D.fillRect(144, 144, TILE_SIZE,TILE_SIZE);
     }
 
-    protected void paintAnotherObjectPlayer(Graphics graphics){
-        Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.setColor(Color.WHITE);
-        graphics2D.fillRect(150, 150, TILE_SIZE,TILE_SIZE);
+    private void paintPlayer(Graphics graphics){
+        graphics.drawImage(player.getImagePlayer(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
     }
+
 
 
 
