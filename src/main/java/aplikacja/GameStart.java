@@ -9,16 +9,16 @@ import javax.swing.*;
 
 public class GameStart {
 
-
+    public static ServerService service;
 
     public static void main(String[] args) {
-        createGameFrame();
-
-
         //ServerSocket IMP
         ServerDaoImpl serverDao = new ServerDaoImpl();
-        ServerService service = new ServerService(serverDao);
+        service = new ServerService(serverDao);
         service.connect();
+
+        createGameFrame();
+
     }
 
     public static void createGameFrame(){

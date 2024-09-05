@@ -3,10 +3,9 @@ package aplikacja.server.implementation;
 import aplikacja.server.dao.ServerDao;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.Socket;
-import java.net.URL;
 import java.net.UnknownHostException;
 
 /**
@@ -14,23 +13,15 @@ import java.net.UnknownHostException;
  */
 public class ServerDaoImpl implements ServerDao {
 
-
-
-
-
+    private InputStream inputStream;
+    private OutputStream outputStream;
     @Override
     public void connect() {
-      /// Nawiązanie połączenia z serwerem na localhost:8080
+
         try {
             Socket socket = new Socket("localhost", 8080);
-
-            //chcesz wyslac klase Socket do innego watku i tam to obslugiwac, mozesz to zrobic w tej klasie np
-
-            OutputStream outputToClient = socket.getOutputStream();
-            String message = "Witam";
-            outputToClient.write(message.getBytes());
-
-            socket.close();
+            this.outputStream = socket.getOutputStream();
+            this.inputStream = socket.getInputStream();
         } catch (UnknownHostException e) {
             System.out.println("Host could not be found: " + e.getMessage());
         } catch (IOException e) {
@@ -38,6 +29,20 @@ public class ServerDaoImpl implements ServerDao {
         }
 
     }
+
+
+    public void sendKeyMoveEvent(byte[] playerMessage){
+        try {
+            outputStream.write(playerMessage);
+            outputStream.write(0);
+            outputStream.flush();
+        }catch (IOException e){
+            System.out.println("Blad przy wyslaniu wiadomosci");
+        }
+
+    }
+
+
 
 
 }

@@ -14,6 +14,10 @@ public class ServerService {
         serverDao.connect();
     }
 
+    public void sendMessage(byte[] playerMessage){
+        serverDao.sendKeyMoveEvent(playerMessage);
+    }
+
 
 
 }

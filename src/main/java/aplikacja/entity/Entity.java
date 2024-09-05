@@ -4,8 +4,7 @@ public class Entity {
 
     protected int x;
     protected int y;
-
-
+    protected final int tileMove = 48;
 
     public int getX() {
         return x;
@@ -22,6 +21,8 @@ public class Entity {
     public void setY(int y) {
         this.y = y;
     }
+
+
 
 
 }

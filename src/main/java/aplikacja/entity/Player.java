@@ -7,11 +7,10 @@ import java.util.logging.Logger;
 
 public class Player extends Entity{
 
-    //co ile ma gracz sie przesuwac(tutaj 48 oznacza ze o jedna kratke)
-    protected final int tileMove = 48;
-    private static final Logger logger = Logger.getLogger(Player.class.getName());
     //Grafika
     private BufferedImage imagePlayer;
+
+    private static final Logger logger = Logger.getLogger(Player.class.getName());
 
 
     public Player(int x, int y){
@@ -36,9 +35,11 @@ public class Player extends Entity{
         x = x - tileMove;
     }
 
-    public BufferedImage getImagePlayer() {
-        return imagePlayer;
+    public byte[] getPositionInBytes(){
+        byte[] playerInfo = {(byte) (x / 48),(byte) (y / 48)};
+        return playerInfo;
     }
+
 
     protected void loadTextures(){
         try{
@@ -46,5 +47,9 @@ public class Player extends Entity{
         }catch (IOException e){
             logger.severe("Blad przy ladowaniu grafiki gracza");
         }
+    }
+
+    public BufferedImage getImagePlayer() {
+        return imagePlayer;
     }
 }

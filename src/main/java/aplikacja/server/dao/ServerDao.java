@@ -5,4 +5,5 @@ public interface ServerDao {
 
 
     void connect();
+    void sendKeyMoveEvent(byte[] playerMessage);
 }

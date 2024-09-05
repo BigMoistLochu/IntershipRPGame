@@ -30,6 +30,7 @@ public class GameBoard extends JPanel implements Runnable{
     private final Player player = new Player(48,48);
 
 
+
     public GameBoard(){
         //Main Setting Board
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));

@@ -2,7 +2,9 @@ package aplikacja.gameBoard;
 
 
 
+import aplikacja.GameStart;
 import aplikacja.entity.Player;
+import aplikacja.server.ServerService;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -13,6 +15,8 @@ public class KeyMovementListener implements KeyListener {
 
     private Player player;
 
+    private ServerService service = GameStart.service;
+
     public KeyMovementListener(Player player){
         this.player = player;
     }
@@ -22,10 +26,12 @@ public class KeyMovementListener implements KeyListener {
         if(e.getKeyCode()==KeyEvent.VK_W){
             UP_KEY_PRESSED = true;
             player.moveUp();
+            service.sendMessage(player.getPositionInBytes());
         }
         else if(e.getKeyCode()==KeyEvent.VK_D) {
             RIGHT_KEY_PRESSED = true;
             player.moveRight();
+
         }
         else if(e.getKeyCode()==KeyEvent.VK_S) {
             DOWN_KEY_PRESSED = true;
