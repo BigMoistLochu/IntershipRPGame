@@ -33,9 +33,12 @@ public class ServerDaoImpl implements ServerDao {
 
     public void sendKeyMoveEvent(byte[] playerMessage){
         try {
-            outputStream.write(playerMessage);
-            outputStream.write(0);
-            outputStream.flush();
+            if(outputStream!=null){
+                outputStream.write(playerMessage);
+                outputStream.write(255);
+                outputStream.flush();
+            }
+            //loggin, outputstream is null
         }catch (IOException e){
             System.out.println("Blad przy wyslaniu wiadomosci");
         }

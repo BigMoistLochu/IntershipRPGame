@@ -3,11 +3,15 @@ package aplikacja.gameBoard;
 
 
 import aplikacja.entity.Player;
+import aplikacja.entity.PlayerCache;
 import aplikacja.server.ServerService;
 import aplikacja.server.implementation.ServerDaoImpl;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 
 
 public class GameBoard extends JPanel implements Runnable{
@@ -27,8 +31,8 @@ public class GameBoard extends JPanel implements Runnable{
     //Game Board Thread
     private Thread gameBoardLoopThread;
 
-    private final Player player = new Player(48,48);
-
+    private final Player player = new Player((int) (Math.random() * 254));
+    private final Map<Integer,Player> listPlayerToDraw = PlayerCache.playerList;
 
 
     public GameBoard(){
@@ -99,6 +103,13 @@ public class GameBoard extends JPanel implements Runnable{
         Graphics2D graphics2D = (Graphics2D) graphics;
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillRect(144, 144, TILE_SIZE,TILE_SIZE);
+    }
+
+    private void paintBySocket(Graphics graphics){
+        listPlayerToDraw.forEach((key,value)->{
+//            graphics.drawImage(,)
+        });
+
     }
 
     private void paintPlayer(Graphics graphics){
