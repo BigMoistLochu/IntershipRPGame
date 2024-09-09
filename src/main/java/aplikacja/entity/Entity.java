@@ -17,7 +17,7 @@ public class Entity {
     }
 
     public int getX() {
-        return x;
+        return x * tileMove;
     }
 
     public void setX(int x) {
@@ -25,7 +25,7 @@ public class Entity {
     }
 
     public int getY() {
-        return y;
+        return y * tileMove;
     }
 
     public void setY(int y) {

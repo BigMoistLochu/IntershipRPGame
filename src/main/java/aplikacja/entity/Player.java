@@ -18,34 +18,46 @@ public class Player extends Entity{
         this.id = id;
 
         //start position player
-        this.x = 48;
-        this.y = 48;
+        this.x = 0;
+        this.y = 0;
         this.direction = 0;
         loadTextures();
     }
 
+    public Player(int id,int x, int y, int direction){
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
+        loadTextures();
+    }
+
     public void moveUp(){
-        y = y - tileMove;
+        y = y - 1;
         direction = 1;
     }
 
     public void moveDown(){
-        y = y + tileMove;
+        y = y + 1;
         direction = 0;
     }
 
     public void moveRight(){
-       x = x + tileMove;
+       x = x + 1;
        direction = 2;
     }
 
     public void moveLeft(){
-        x = x - tileMove;
+        x = x - 1;
         direction = 3;
     }
 
+    public BufferedImage getImagePlayer() {
+        return imagePlayer;
+    }
+
     public byte[] getPositionInBytes(){
-        byte[] playerInfo = {(byte) id , (byte) (x / 48) , (byte) (y / 48) , (byte) direction};
+        byte[] playerInfo = {(byte) id , (byte) x, (byte) y, (byte) direction};
         return playerInfo;
     }
 
@@ -58,7 +70,13 @@ public class Player extends Entity{
         }
     }
 
-    public BufferedImage getImagePlayer() {
-        return imagePlayer;
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", x=" + x +
+                ", y=" + y +
+                ", direction=" + direction +
+                '}';
     }
 }

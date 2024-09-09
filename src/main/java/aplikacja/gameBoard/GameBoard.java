@@ -32,7 +32,6 @@ public class GameBoard extends JPanel implements Runnable{
     private Thread gameBoardLoopThread;
 
     private final Player player = new Player((int) (Math.random() * 254));
-    private final Map<Integer,Player> listPlayerToDraw = PlayerCache.playerList;
 
 
     public GameBoard(){
@@ -43,12 +42,12 @@ public class GameBoard extends JPanel implements Runnable{
 
         //Create Game Loop Thread
         this.gameBoardLoopThread = new Thread(this);
-        gameBoardLoopThread.start(); //start thread working
+        gameBoardLoopThread.start(); //start game board working
 
         //Setting KeyListener
         KeyMovementListener keyMovementListener = new KeyMovementListener(player);
         this.addKeyListener(keyMovementListener);
-
+        PlayerCache.playerList.put(player.getId(),player);
 
         this.setFocusable(true);
     }
@@ -74,7 +73,7 @@ public class GameBoard extends JPanel implements Runnable{
             lastTime = currentTime;
 
             if(delta >= 1){
-                repaint();
+                repaint(); //repaint board
                 delta = delta - 1;
                 drawCount++;
             }
@@ -96,7 +95,8 @@ public class GameBoard extends JPanel implements Runnable{
 
     private void updateGame(Graphics g){
         paintMap(g);
-        paintPlayer(g);
+//        paintPlayer(g);
+        paintBySocket(g);
     }
 
     private void paintMap(Graphics graphics){
@@ -106,10 +106,9 @@ public class GameBoard extends JPanel implements Runnable{
     }
 
     private void paintBySocket(Graphics graphics){
-        listPlayerToDraw.forEach((key,value)->{
-//            graphics.drawImage(,)
+        PlayerCache.playerList.forEach((key,player)->{
+            graphics.drawImage(player.getImagePlayer(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
         });
-
     }
 
     private void paintPlayer(Graphics graphics){
