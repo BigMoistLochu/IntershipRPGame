@@ -60,6 +60,7 @@ public class ServerDaoImpl implements ServerDao {
 
 
     public void sendKeyMoveEvent(byte[] playerMessage){
+
         try {
             if(outputStream!=null){
                 outputStream.write(playerMessage);
