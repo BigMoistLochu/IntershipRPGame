@@ -15,24 +15,25 @@ public class Player extends Entity{
 
 
     public Player(int id){
+        //load sprites
+        loadTextures();
         //unique id o player
         this.id = id;
-
         //start position player
         this.x = 0;
         this.y = 0;
         this.direction = 0;
         this.sprite = down01;
-        loadTextures();
     }
 
     public Player(int id,int x, int y, int direction){
+        //load sprites
+        loadTextures();
         this.id = id;
         this.x = x;
         this.y = y;
         this.direction = direction;
         this.sprite = down01;
-        loadTextures();
     }
 
     public void moveDown(){

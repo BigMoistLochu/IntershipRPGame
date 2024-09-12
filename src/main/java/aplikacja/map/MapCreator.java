@@ -8,14 +8,14 @@ import java.io.*;
 public class MapCreator {
 
     private BufferedImage grass;
-    private BufferedImage title;
-    private BufferedImage stone;
+    private BufferedImage ground;
+    private BufferedImage brick;
 
     public MapCreator() {
         try {
             this.grass = ImageIO.read(getClass().getResourceAsStream("/floor/grass.png"));
-            this.title = ImageIO.read(getClass().getResourceAsStream("/floor/title.png"));
-            this.stone = ImageIO.read(getClass().getResourceAsStream("/floor/stone.png"));
+            this.ground = ImageIO.read(getClass().getResourceAsStream("/floor/title.png"));
+            this.brick = ImageIO.read(getClass().getResourceAsStream("/floor/brick.png"));
 
         }catch (IOException e){
             System.out.println("Blad przy ladowaniu plikow z folderu: MAP");
@@ -26,12 +26,12 @@ public class MapCreator {
         return grass;
     }
 
-    public BufferedImage getTitle(){
-        return title;
+    public BufferedImage getGround(){
+        return ground;
     }
 
-    public BufferedImage getStone(){
-        return stone;
+    public BufferedImage getBrick(){
+        return brick;
     }
 
     public void paintMap(Graphics graphics){
@@ -50,9 +50,9 @@ public class MapCreator {
                     if(theNumber == 0){
                         graphics.drawImage(getGrass(), row * 48, column * 48,48,48, null);
                     } else if (theNumber == 1) {
-                        graphics.drawImage(getTitle(), row * 48, column * 48,48,48, null);
+                        graphics.drawImage(getGround(), row * 48, column * 48,48,48, null);
                     } else if (theNumber == 2) {
-                        graphics.drawImage(getStone(), row * 48, column * 48,48,48, null);
+                        graphics.drawImage(getBrick(), row * 48, column * 48,48,48, null);
                     }
 
                     row++;

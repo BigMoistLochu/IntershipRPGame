@@ -53,7 +53,7 @@ public class ServerDaoImpl implements ServerDao {
         } catch (UnknownHostException e) {
             System.out.println("Host could not be found: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Blad przy polaczeniu sie z serverem, gra nie bedzie multiplayer " + e.getMessage());
+            System.out.println("Blad przy polaczeniu sie z serverem, gra nie bedzie multiplayer");
         }
 
     }

@@ -38,18 +38,38 @@ public class GameBoard extends JPanel implements Runnable{
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
+        //Load your player to cache
+        PlayerCache.playerList.put(player.getId(),player);
+
         //Game drawing loop
         this.gameBoardLoopThread = new Thread(this);
         gameBoardLoopThread.start();
 
-
         //Setting KeyListener
         KeyMovementListener keyMovementListener = new KeyMovementListener(player);
         this.addKeyListener(keyMovementListener);
-        PlayerCache.playerList.put(player.getId(),player);
 
         this.setFocusable(true);
     }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        paintMap(g);
+        paintPlayers(g);
+    }
+
+    private void paintMap(Graphics graphics){
+        mapCreator.paintMap(graphics);
+    }
+
+    private void paintPlayers(Graphics graphics){
+        PlayerCache.playerList.forEach((key,player)->{
+            graphics.drawImage(player.getSprite(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
+        });
+    }
+
+
 
     /**
      * Watek ktory ma za zadanie renderowac obraz gdy obiekty beda zmieniac swoje parametry np gracz czy npc
@@ -83,28 +103,6 @@ public class GameBoard extends JPanel implements Runnable{
                 timer = 0;
             }
         }
-    }
-
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        updateGame(g);
-    }
-
-    private void updateGame(Graphics g){
-        paintMap(g);
-        paintPlayers(g);
-    }
-
-    private void paintMap(Graphics graphics){
-        mapCreator.paintMap(graphics);
-    }
-
-    private void paintPlayers(Graphics graphics){
-        PlayerCache.playerList.forEach((key,player)->{
-            graphics.drawImage(player.getSprite(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
-        });
     }
 
 
