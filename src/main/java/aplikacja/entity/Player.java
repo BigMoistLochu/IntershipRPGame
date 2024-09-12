@@ -7,8 +7,9 @@ import java.util.logging.Logger;
 
 public class Player extends Entity{
 
-    //Grafika
-    private BufferedImage imagePlayer;
+
+    private BufferedImage down01,left01,right01,up01;
+    private BufferedImage sprite;
 
     private static final Logger logger = Logger.getLogger(Player.class.getName());
 
@@ -21,6 +22,7 @@ public class Player extends Entity{
         this.x = 0;
         this.y = 0;
         this.direction = 0;
+        this.sprite = down01;
         loadTextures();
     }
 
@@ -29,32 +31,39 @@ public class Player extends Entity{
         this.x = x;
         this.y = y;
         this.direction = direction;
+        this.sprite = down01;
         loadTextures();
-    }
-
-    public void moveUp(){
-        y = y - 1;
-        direction = 1;
     }
 
     public void moveDown(){
         y = y + 1;
         direction = 0;
+        sprite = down01;
+    }
+
+    public void moveUp(){
+        y = y - 1;
+        direction = 1;
+        sprite = up01;
     }
 
     public void moveRight(){
        x = x + 1;
        direction = 2;
+       sprite = right01;
     }
 
     public void moveLeft(){
         x = x - 1;
         direction = 3;
+        sprite = left01;
     }
 
-    public BufferedImage getImagePlayer() {
-        return imagePlayer;
+
+    public BufferedImage getSprite(){
+        return sprite;
     }
+
 
     public byte[] getPositionInBytes(){
         byte[] playerInfo = {(byte) id , (byte) x, (byte) y, (byte) direction};
@@ -64,9 +73,12 @@ public class Player extends Entity{
 
     protected void loadTextures(){
         try{
-            this.imagePlayer = ImageIO.read(getClass().getResourceAsStream("/player/player1.png"));
+            this.down01 = ImageIO.read(getClass().getResourceAsStream("/player/player_down_01.png"));
+            this.up01 = ImageIO.read(getClass().getResourceAsStream("/player/player_up_01.png"));
+            this.right01 = ImageIO.read(getClass().getResourceAsStream("/player/player_right_01.png"));
+            this.left01 = ImageIO.read(getClass().getResourceAsStream("/player/player_left_01.png"));
         }catch (IOException e){
-            logger.severe("Blad przy ladowaniu grafiki gracza");
+            logger.severe("Blad przy ladowaniu plikow z folderu: Player");
         }
     }
 

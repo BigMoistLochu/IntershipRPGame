@@ -3,15 +3,11 @@ package aplikacja.gameBoard;
 
 
 import aplikacja.entity.Player;
-import aplikacja.entity.PlayerCache;
-import aplikacja.server.ServerService;
-import aplikacja.server.implementation.ServerDaoImpl;
+import aplikacja.cache.PlayerCache;
+import aplikacja.map.MapCreator;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
 
 
 public class GameBoard extends JPanel implements Runnable{
@@ -33,6 +29,8 @@ public class GameBoard extends JPanel implements Runnable{
 
     private final Player player = new Player((int) (Math.random() * 254));
 
+    private final MapCreator mapCreator = new MapCreator();
+
 
     public GameBoard(){
         //Main Setting Board
@@ -40,9 +38,10 @@ public class GameBoard extends JPanel implements Runnable{
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
-        //Create Game Loop Thread
+        //Game drawing loop
         this.gameBoardLoopThread = new Thread(this);
-        gameBoardLoopThread.start(); //start game board working
+        gameBoardLoopThread.start();
+
 
         //Setting KeyListener
         KeyMovementListener keyMovementListener = new KeyMovementListener(player);
@@ -95,25 +94,19 @@ public class GameBoard extends JPanel implements Runnable{
 
     private void updateGame(Graphics g){
         paintMap(g);
-//        paintPlayer(g);
-        paintBySocket(g);
+        paintPlayers(g);
     }
 
     private void paintMap(Graphics graphics){
-        Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.setColor(Color.WHITE);
-        graphics2D.fillRect(144, 144, TILE_SIZE,TILE_SIZE);
+        mapCreator.paintMap(graphics);
     }
 
-    private void paintBySocket(Graphics graphics){
+    private void paintPlayers(Graphics graphics){
         PlayerCache.playerList.forEach((key,player)->{
-            graphics.drawImage(player.getImagePlayer(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
+            graphics.drawImage(player.getSprite(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
         });
     }
 
-    private void paintPlayer(Graphics graphics){
-        graphics.drawImage(player.getImagePlayer(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
-    }
 
 
 

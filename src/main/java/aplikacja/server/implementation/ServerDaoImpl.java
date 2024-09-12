@@ -1,7 +1,7 @@
 package aplikacja.server.implementation;
 
 import aplikacja.entity.Player;
-import aplikacja.entity.PlayerCache;
+import aplikacja.cache.PlayerCache;
 import aplikacja.server.dao.ServerDao;
 
 import java.io.IOException;
@@ -53,7 +53,7 @@ public class ServerDaoImpl implements ServerDao {
         } catch (UnknownHostException e) {
             System.out.println("Host could not be found: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("I/O error: " + e.getMessage());
+            System.out.println("Blad przy polaczeniu sie z serverem, gra nie bedzie multiplayer " + e.getMessage());
         }
 
     }
