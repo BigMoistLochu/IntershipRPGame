@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class Player extends Entity{
 
 
-    private BufferedImage down01,left01,right01,up01;
+    private BufferedImage down01,left01,right01,up01,up02;
     private BufferedImage sprite;
 
     private static final Logger logger = Logger.getLogger(Player.class.getName());
@@ -45,7 +45,9 @@ public class Player extends Entity{
     public void moveUp(){
         y = y - 1;
         direction = 1;
-        sprite = up01;
+        if(sprite.equals(up01)){
+            sprite = up02;
+        }else sprite = up01;
     }
 
     public void moveRight(){
@@ -76,6 +78,7 @@ public class Player extends Entity{
         try{
             this.down01 = ImageIO.read(getClass().getResourceAsStream("/player/player_down_01.png"));
             this.up01 = ImageIO.read(getClass().getResourceAsStream("/player/player_up_01.png"));
+            this.up02 = ImageIO.read(getClass().getResourceAsStream("/player/player_up_02.png"));
             this.right01 = ImageIO.read(getClass().getResourceAsStream("/player/player_right_01.png"));
             this.left01 = ImageIO.read(getClass().getResourceAsStream("/player/player_left_01.png"));
         }catch (IOException e){
