@@ -17,16 +17,15 @@ public class GameStart {
         service = new ServerService(serverDao);
         service.connect();
 
-        createGameFrame();
 
+        //create GameBoard
+        createGameBoardAndSettings();
     }
 
-    public static void createGameFrame(){
+    public static void createGameBoardAndSettings(){
         JFrame window = new JFrame();
-        window.setTitle("IntershipRPGame");
+        window.setTitle("Recruitment Showdown");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
 
         //Create GameBoard
         GameBoard gameBoard = new GameBoard();

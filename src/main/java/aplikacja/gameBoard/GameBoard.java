@@ -16,8 +16,8 @@ public class GameBoard extends JPanel implements Runnable{
     private final int ORGINAL_TILE_SIZE = 16; //obrazki tworzymy 16x16
     private final int SCALE = 3;
     private final int TILE_SIZE = SCALE * ORGINAL_TILE_SIZE; //jedna plytka ma wymiar 48x48
-    private final int MAX_SCREEN_COLUMN = 16;
-    private final int MAX_SCREEN_ROW = 12;
+    private final int MAX_SCREEN_COLUMN = 22;
+    private final int MAX_SCREEN_ROW = 17;
     private final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COLUMN; //48x16 = 768 pixeli
     private final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // 48x12 = 576 pixeli
 
@@ -57,6 +57,7 @@ public class GameBoard extends JPanel implements Runnable{
         super.paintComponent(g);
         paintMap(g);
         paintPlayers(g);
+        paintDialogWindow(g);
     }
 
     private void paintMap(Graphics graphics){
@@ -67,6 +68,17 @@ public class GameBoard extends JPanel implements Runnable{
         PlayerCache.playerList.forEach((key,player)->{
             graphics.drawImage(player.getSprite(), player.getX(), player.getY(),TILE_SIZE,TILE_SIZE, null);
         });
+    }
+
+    private void paintDialogWindow(Graphics graphics){
+        Graphics2D g = (Graphics2D) graphics;
+        Color color = new Color(0,0,0,200);
+        g.setColor(color);
+        g.fillRoundRect(0,12*48,48*22,48*5,35,35);
+        color = new Color(255,255,255);
+        g.setColor(color);
+        g.setStroke(new BasicStroke(5));
+        g.drawRoundRect(5,12*48+5,48*22-10,48*5-10,25,25);
     }
 
 

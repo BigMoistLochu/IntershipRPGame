@@ -26,22 +26,22 @@ public class KeyMovementListener implements KeyListener {
         if(e.getKeyCode()==KeyEvent.VK_W){
             UP_KEY_PRESSED = true;
             player.moveUp();
-            service.sendMessage(player.getPositionInBytes());
+            service.sendPositionMessage(player.getPositionInBytes());
         }
         else if(e.getKeyCode()==KeyEvent.VK_D) {
             RIGHT_KEY_PRESSED = true;
             player.moveRight();
-            service.sendMessage(player.getPositionInBytes());
+            service.sendPositionMessage(player.getPositionInBytes());
         }
         else if(e.getKeyCode()==KeyEvent.VK_S) {
             DOWN_KEY_PRESSED = true;
             player.moveDown();
-            service.sendMessage(player.getPositionInBytes());
+            service.sendPositionMessage(player.getPositionInBytes());
         }
         else if(e.getKeyCode()==KeyEvent.VK_A) {
             LEFT_KEY_PRESSED = true;
             player.moveLeft();
-            service.sendMessage(player.getPositionInBytes());
+            service.sendPositionMessage(player.getPositionInBytes());
         }
     }
 

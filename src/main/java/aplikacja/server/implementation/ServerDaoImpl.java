@@ -19,6 +19,7 @@ public class ServerDaoImpl implements ServerDao {
 
     private InputStream inputStream;
     private OutputStream outputStream;
+
     @Override
     public void connect() {
 

@@ -14,7 +14,7 @@ public class ServerService {
         serverDao.connect();
     }
 
-    public void sendMessage(byte[] playerMessage){
+    public void sendPositionMessage(byte[] playerMessage){
         serverDao.sendKeyMoveEvent(playerMessage);
     }
 
