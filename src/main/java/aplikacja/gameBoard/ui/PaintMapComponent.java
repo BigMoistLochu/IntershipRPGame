@@ -1,37 +1,28 @@
-package aplikacja.map;
+package aplikacja.gameBoard.ui;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-public class MapCreator {
+public class PaintMapComponent {
 
-    private BufferedImage grass;
-    private BufferedImage ground;
-    private BufferedImage brick;
+    private BufferedImage grass,ground,brick;
+    private BufferedImage answerA,answerB,answerC,answerD;
 
-    public MapCreator() {
+    public PaintMapComponent() {
         try {
             this.grass = ImageIO.read(getClass().getResourceAsStream("/floor/grass.png"));
             this.ground = ImageIO.read(getClass().getResourceAsStream("/floor/title.png"));
             this.brick = ImageIO.read(getClass().getResourceAsStream("/floor/brick.png"));
+            this.answerA = ImageIO.read(getClass().getResourceAsStream("/floor/answer_a.png"));
+            this.answerB = ImageIO.read(getClass().getResourceAsStream("/floor/answer_b.png"));
+            this.answerC = ImageIO.read(getClass().getResourceAsStream("/floor/answer_c.png"));
+            this.answerD = ImageIO.read(getClass().getResourceAsStream("/floor/answer_d.png"));
 
         }catch (IOException e){
             System.out.println("Blad przy ladowaniu plikow z folderu: MAP");
         }
-    }
-
-    public BufferedImage getGrass(){
-        return grass;
-    }
-
-    public BufferedImage getGround(){
-        return ground;
-    }
-
-    public BufferedImage getBrick(){
-        return brick;
     }
 
     public void paintMap(Graphics graphics){
@@ -48,11 +39,22 @@ public class MapCreator {
                     int theNumber = Integer.parseInt(number);
 
                     if(theNumber == 0){
-                        graphics.drawImage(getGrass(), row * 48, column * 48,48,48, null);
+                        graphics.drawImage(grass, row * 48, column * 48,48,48, null);
                     } else if (theNumber == 1) {
-                        graphics.drawImage(getGround(), row * 48, column * 48,48,48, null);
+                        graphics.drawImage(ground, row * 48, column * 48,48,48, null);
                     } else if (theNumber == 2) {
-                        graphics.drawImage(getBrick(), row * 48, column * 48,48,48, null);
+                        graphics.drawImage(brick, row * 48, column * 48,48,48, null);
+                    } else if (theNumber == 3) {
+                        graphics.drawImage(answerA, row * 48, column * 48,48,48, null);
+                    }
+                    else if (theNumber == 4) {
+                        graphics.drawImage(answerB, row * 48, column * 48,48,48, null);
+                    }
+                    else if (theNumber == 5) {
+                        graphics.drawImage(answerC, row * 48, column * 48,48,48, null);
+                    }
+                    else if (theNumber == 6) {
+                        graphics.drawImage(answerD, row * 48, column * 48,48,48, null);
                     }
 
                     row++;
