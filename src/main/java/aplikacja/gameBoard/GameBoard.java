@@ -57,7 +57,7 @@ public class GameBoard extends JPanel implements Runnable {
     }
 
     /**
-     * Watek ktory ma za zadanie renderowac obraz gdy obiekty beda zmieniac swoje parametry np gracz czy npc
+     * Watek ktory ma za zadanie renderowac obraz gdy obiekty beda zmieniac swoje parametry np gracz czy tekst
      */
     @Override
     public void run() {

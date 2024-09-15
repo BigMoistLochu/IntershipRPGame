@@ -42,6 +42,8 @@ public class KeyMovementListener implements KeyListener {
             LEFT_KEY_PRESSED = true;
             player.moveLeft();
             service.sendPositionMessage(player.getPositionInBytes());
+        } else if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+            //change Text
         }
     }
 

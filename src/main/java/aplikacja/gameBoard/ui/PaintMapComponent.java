@@ -32,29 +32,31 @@ public class PaintMapComponent {
             String line;
             int column = 0;
             int row = 0;
+            int TILE_SIZE = 48;
 
             while ((line = bufferedReader.readLine()) != null){
                 String[] numbers = line.split(" ");
                 for(String number : numbers){
                     int theNumber = Integer.parseInt(number);
 
+
                     if(theNumber == 0){
-                        graphics.drawImage(grass, row * 48, column * 48,48,48, null);
+                        graphics.drawImage(grass, row * TILE_SIZE, column * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
                     } else if (theNumber == 1) {
-                        graphics.drawImage(ground, row * 48, column * 48,48,48, null);
+                        graphics.drawImage(ground, row * TILE_SIZE, column * TILE_SIZE, TILE_SIZE, TILE_SIZE, null);
                     } else if (theNumber == 2) {
-                        graphics.drawImage(brick, row * 48, column * 48,48,48, null);
+                        graphics.drawImage(brick, row * TILE_SIZE, column * TILE_SIZE,TILE_SIZE, TILE_SIZE, null);
                     } else if (theNumber == 3) {
-                        graphics.drawImage(answerA, row * 48, column * 48,48,48, null);
+                        graphics.drawImage(answerA, row * TILE_SIZE, column * TILE_SIZE,TILE_SIZE,TILE_SIZE, null);
                     }
                     else if (theNumber == 4) {
-                        graphics.drawImage(answerB, row * 48, column * 48,48,48, null);
+                        graphics.drawImage(answerB, row * TILE_SIZE, column * TILE_SIZE,TILE_SIZE,TILE_SIZE, null);
                     }
                     else if (theNumber == 5) {
-                        graphics.drawImage(answerC, row * 48, column * 48,48,48, null);
+                        graphics.drawImage(answerC, row * TILE_SIZE, column * TILE_SIZE,TILE_SIZE,TILE_SIZE, null);
                     }
                     else if (theNumber == 6) {
-                        graphics.drawImage(answerD, row * 48, column * 48,48,48, null);
+                        graphics.drawImage(answerD, row * TILE_SIZE, column * TILE_SIZE,TILE_SIZE,TILE_SIZE, null);
                     }
 
                     row++;

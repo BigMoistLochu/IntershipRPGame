@@ -20,8 +20,8 @@ public class Player extends Entity{
         //unique id o player
         this.id = id;
         //start position player
-        this.x = 0;
-        this.y = 0;
+        this.x = 9;
+        this.y = 4;
         this.direction = 0;
         this.sprite = down01;
     }
@@ -37,27 +37,25 @@ public class Player extends Entity{
     }
 
     public void moveDown(){
-        y = y + 1;
+        if(y < 10) y = y + 1;
         direction = 0;
         sprite = down01;
     }
 
     public void moveUp(){
-        y = y - 1;
+        if(y > 1) y = y - 1;
         direction = 1;
-        if(sprite.equals(up01)){
-            sprite = up02;
-        }else sprite = up01;
+        sprite = up01;
     }
 
     public void moveRight(){
-       x = x + 1;
+       if(x < 19) x = x + 1;
        direction = 2;
        sprite = right01;
     }
 
     public void moveLeft(){
-        x = x - 1;
+        if(x > 1) x = x - 1;
         direction = 3;
         sprite = left01;
     }
