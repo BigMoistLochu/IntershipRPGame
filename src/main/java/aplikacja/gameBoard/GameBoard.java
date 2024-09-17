@@ -3,7 +3,6 @@ package aplikacja.gameBoard;
 
 import aplikacja.entity.Player;
 import aplikacja.cache.PlayerCache;
-import aplikacja.gameBoard.ui.PaintMapComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +25,7 @@ public class GameBoard extends JPanel implements Runnable {
     //Game Board Thread
     private Thread gameBoardLoopThread;
     //User Interface to generate components
-    private final UserInterface userInterface = new UserInterface();
+    private final UserInterfaceService userInterfaceService = new UserInterfaceService();
 
 
     public GameBoard() {
@@ -53,7 +52,7 @@ public class GameBoard extends JPanel implements Runnable {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        userInterface.paintComponents(g);
+        userInterfaceService.paintComponents(g);
     }
 
     /**

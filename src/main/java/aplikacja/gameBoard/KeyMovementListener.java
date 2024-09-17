@@ -14,8 +14,8 @@ public class KeyMovementListener implements KeyListener {
     private boolean UP_KEY_PRESSED,RIGHT_KEY_PRESSED,LEFT_KEY_PRESSED,DOWN_KEY_PRESSED;
 
     private Player player;
-
-    private ServerService service = GameStart.service;
+    private final ServerService service = GameStart.service;
+    private final UserInterfaceService userInterfaceService = new UserInterfaceService();
 
     public KeyMovementListener(Player player){
         this.player = player;
@@ -43,7 +43,7 @@ public class KeyMovementListener implements KeyListener {
             player.moveLeft();
             service.sendPositionMessage(player.getPositionInBytes());
         } else if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-            //change Text
+
         }
     }
 
