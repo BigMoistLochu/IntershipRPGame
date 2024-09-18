@@ -3,7 +3,7 @@ package aplikacja.gameBoard;
 
 
 import aplikacja.GameStart;
-import aplikacja.entity.Player;
+import aplikacja.model.Player;
 import aplikacja.server.ServerService;
 
 import java.awt.event.KeyEvent;
@@ -15,7 +15,6 @@ public class KeyMovementListener implements KeyListener {
 
     private Player player;
     private final ServerService service = GameStart.service;
-    private final UserInterfaceService userInterfaceService = new UserInterfaceService();
 
     public KeyMovementListener(Player player){
         this.player = player;
@@ -43,7 +42,7 @@ public class KeyMovementListener implements KeyListener {
             player.moveLeft();
             service.sendPositionMessage(player.getPositionInBytes());
         } else if (e.getKeyCode()==KeyEvent.VK_ENTER) {
-
+            player.updateDialogStatus();
         }
     }
 

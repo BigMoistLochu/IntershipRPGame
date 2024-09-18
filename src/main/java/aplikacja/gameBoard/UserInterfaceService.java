@@ -1,6 +1,7 @@
 package aplikacja.gameBoard;
 
 import aplikacja.cache.PlayerCache;
+import aplikacja.model.Player;
 import aplikacja.gameBoard.ui.PaintDialogComponent;
 import aplikacja.gameBoard.ui.PaintMapComponent;
 
@@ -10,8 +11,10 @@ public class UserInterfaceService {
 
     private final PaintMapComponent paintMapComponent;
     private final PaintDialogComponent paintDialogComponent;
+    private final Player player;
 
-    protected UserInterfaceService(){
+    protected UserInterfaceService(Player player){
+        this.player = player;
         this.paintMapComponent = new PaintMapComponent();
         this.paintDialogComponent = new PaintDialogComponent();
     }
@@ -20,7 +23,7 @@ public class UserInterfaceService {
         paintMap(graphics);
         paintPlayers(graphics);
         paintDialogFrame(graphics);
-        paintText(graphics);
+        paintTextForPlayer(graphics);
     }
 
     private void paintMap(Graphics graphics) {
@@ -37,12 +40,8 @@ public class UserInterfaceService {
         paintDialogComponent.paintDialogFrame(graphics);
     }
 
-    private void paintText(Graphics graphics){
-        paintDialogComponent.paintDialogText(graphics);
-    }
-
-    public void changeDialogState(){
-
+    private void paintTextForPlayer(Graphics graphics){
+        paintDialogComponent.paintDialogText(graphics,player);
     }
 
 

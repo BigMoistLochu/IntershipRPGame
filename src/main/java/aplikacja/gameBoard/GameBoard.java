@@ -1,7 +1,7 @@
 package aplikacja.gameBoard;
 
 
-import aplikacja.entity.Player;
+import aplikacja.model.Player;
 import aplikacja.cache.PlayerCache;
 
 import javax.swing.*;
@@ -24,19 +24,21 @@ public class GameBoard extends JPanel implements Runnable {
 
     //Game Board Thread
     private Thread gameBoardLoopThread;
+
     //User Interface to generate components
-    private final UserInterfaceService userInterfaceService = new UserInterfaceService();
+    private final UserInterfaceService userInterfaceService;
 
 
     public GameBoard() {
-        //Load your player to cache
-        Player player = new Player((int) (Math.random() * 254));
-        PlayerCache.playerList.put(player.getId(), player);
 
         //Main Setting Board
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
+
+        //Load your player to cache
+        Player player = new Player((int) (Math.random() * 254));
+        PlayerCache.playerList.put(player.getId(), player);
 
         //Game drawing loop
         this.gameBoardLoopThread = new Thread(this);
@@ -45,6 +47,10 @@ public class GameBoard extends JPanel implements Runnable {
         //Setting KeyListener
         KeyMovementListener keyMovementListener = new KeyMovementListener(player);
         this.addKeyListener(keyMovementListener);
+
+        //Create UI for player
+        this.userInterfaceService = new UserInterfaceService(player);
+
 
         this.setFocusable(true);
     }

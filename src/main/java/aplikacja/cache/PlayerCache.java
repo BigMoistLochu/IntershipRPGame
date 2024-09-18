@@ -1,6 +1,6 @@
 package aplikacja.cache;
 
-import aplikacja.entity.Player;
+import aplikacja.model.Player;
 
 import java.util.HashMap;
 import java.util.Map;

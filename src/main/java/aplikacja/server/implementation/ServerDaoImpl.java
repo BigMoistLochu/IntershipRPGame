@@ -1,6 +1,6 @@
 package aplikacja.server.implementation;
 
-import aplikacja.entity.Player;
+import aplikacja.model.Player;
 import aplikacja.cache.PlayerCache;
 import aplikacja.server.dao.ServerDao;
 
