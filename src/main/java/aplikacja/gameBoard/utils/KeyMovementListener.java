@@ -1,4 +1,4 @@
-package aplikacja.gameBoard;
+package aplikacja.gameBoard.utils;
 
 
 

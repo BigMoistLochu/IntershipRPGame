@@ -13,8 +13,7 @@ public class GameStart {
 
     public static void main(String[] args) {
         //ServerSocket IMP
-        ServerDaoImpl serverDao = new ServerDaoImpl();
-        service = new ServerService(serverDao);
+        service = new ServerService(new ServerDaoImpl());
         service.connect();
 
 
@@ -22,7 +21,7 @@ public class GameStart {
         createGameBoardAndSettings();
     }
 
-    public static void createGameBoardAndSettings(){
+    private static void createGameBoardAndSettings(){
         JFrame window = new JFrame();
         window.setTitle("Recruitment Showdown");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,6 +1,8 @@
 package aplikacja.gameBoard;
 
 
+import aplikacja.gameBoard.utils.KeyMovementListener;
+import aplikacja.gameBoard.utils.UserInterfaceService;
 import aplikacja.model.Player;
 import aplikacja.cache.PlayerCache;
 

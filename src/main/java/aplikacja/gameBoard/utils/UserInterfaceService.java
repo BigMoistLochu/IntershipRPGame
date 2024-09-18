@@ -1,4 +1,4 @@
-package aplikacja.gameBoard;
+package aplikacja.gameBoard.utils;
 
 import aplikacja.cache.PlayerCache;
 import aplikacja.model.Player;
@@ -13,13 +13,13 @@ public class UserInterfaceService {
     private final PaintDialogComponent paintDialogComponent;
     private final Player player;
 
-    protected UserInterfaceService(Player player){
+    public UserInterfaceService(Player player){
         this.player = player;
         this.paintMapComponent = new PaintMapComponent();
         this.paintDialogComponent = new PaintDialogComponent();
     }
 
-    protected void paintComponents(Graphics graphics){
+    public void paintComponents(Graphics graphics){
         paintMap(graphics);
         paintPlayers(graphics);
         paintDialogFrame(graphics);

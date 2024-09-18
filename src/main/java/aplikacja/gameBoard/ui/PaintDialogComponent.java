@@ -9,9 +9,8 @@ import java.util.Map;
 
 public class PaintDialogComponent {
 
-    private int CURRENT_DIALOG_STATUS = 1;
-    private final Map<String,String> QUESTIONS = new HashMap<>();
 
+    private final Map<String,String> QUESTIONS = new HashMap<>();
 
     public void paintDialogFrame(Graphics graphics) {
         Graphics2D g = (Graphics2D) graphics;
@@ -31,9 +30,9 @@ public class PaintDialogComponent {
         switch (player.getDialogStatus()) {
             case 1:
                 paintText(graphics, "Witamy na Rekrutacji!", 48 * 1, 48 * 13);
+                paintText(graphics, ">>>ENTER<<<!", 48 * 7, 48 * 15);
                 break;
             case 2:
-                System.out.println("Wykonuje sie 2");
                 paintText(graphics, "Czeka Cię ciężkie wyzwanie!", 48 * 1, 48 * 13);
                 break;
         }
