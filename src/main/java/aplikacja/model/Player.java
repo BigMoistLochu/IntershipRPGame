@@ -62,12 +62,16 @@ public class Player{
     }
 
     public void updateDialogStatus(){
-        dialogStatus++;
+        if(dialogStatus==1) dialogStatus++;
     }
 
     public byte[] getPositionInBytes(){
         byte[] playerInfo = {(byte) id , (byte) x, (byte) y, (byte) direction};
         return playerInfo;
+    }
+
+    public byte[] getXYPositionInBytes(){
+        return new byte[]{(byte) x, (byte) y};
     }
 
 
@@ -122,8 +126,16 @@ public class Player{
         return score;
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public int getDialogStatus() {
         return dialogStatus;
+    }
+
+    public void setDialogStatus(int dialogStatus) {
+        this.dialogStatus = dialogStatus;
     }
 
     @Override

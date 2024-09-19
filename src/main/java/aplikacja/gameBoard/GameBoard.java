@@ -17,9 +17,9 @@ public class GameBoard extends JPanel implements Runnable {
     private final int SCALE = 3;
     private final int TILE_SIZE = SCALE * ORGINAL_TILE_SIZE; //jedna plytka ma wymiar 48x48
     private final int MAX_SCREEN_COLUMN = 21;
-    private final int MAX_SCREEN_ROW = 17;
-    private final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COLUMN; //48x16 = 768 pixeli
-    private final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // 48x12 = 576 pixeli
+    private final int MAX_SCREEN_ROW = 18;
+    private final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COLUMN; //48x21
+    private final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; // 48x17
 
     //Game FPS(60 frames per second)
     private final int FPS = 60;

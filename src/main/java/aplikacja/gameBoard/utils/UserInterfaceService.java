@@ -16,7 +16,7 @@ public class UserInterfaceService {
     public UserInterfaceService(Player player){
         this.player = player;
         this.paintMapComponent = new PaintMapComponent();
-        this.paintDialogComponent = new PaintDialogComponent();
+        this.paintDialogComponent = new PaintDialogComponent(player);
     }
 
     public void paintComponents(Graphics graphics){
@@ -41,7 +41,7 @@ public class UserInterfaceService {
     }
 
     private void paintTextForPlayer(Graphics graphics){
-        paintDialogComponent.paintDialogText(graphics,player);
+        paintDialogComponent.paintDialogText(graphics);
     }
 
 
