@@ -28,14 +28,16 @@ Praca nad tym projektem była świetnym wyzwaniem, które pozwoliło mi opanowa�
 związane z Javą, ale także zarządzanie komunikacją sieciową, synchronizacją w czasie rzeczywistym oraz wielowątkowością.
 
 
-## Uruchomienie projektu
+## Uruchomienie projektu 
 ### 0. Uruchom Server (Opcjonalnie)
 Wejdz pod podanego linka i podarzaj za instrukcja:
 ```
 https://github.com/BigMoistLochu/IntershipRPGServer
 ```
+Aby uruchomic gre potrzebujesz jave 17+!
 
 ### 1. Sklonowanie repozytorium
+
 Najpierw sklonuj projekt na swój lokalny komputer:
 
 ```bash
