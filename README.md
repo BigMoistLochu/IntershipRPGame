@@ -1,5 +1,9 @@
 # Recruitment Showdown – Real-Time Multiplayer Battle
 
+
+https://github.com/user-attachments/assets/6df90eec-5dd1-4577-8dd2-56ed61d778b5
+
+
 ## Spis treści
 1. [Opis gry](#opis-gry)
 2. [Technologie](#technologie)
